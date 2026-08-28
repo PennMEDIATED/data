@@ -56,6 +56,7 @@ All four repos are static HTML/CSS built off the same design system. If you're a
 - Section-to-section vertical rhythm uses `--space-1000` (80px) for generous breaks and `--space-600` (48px) between a heading row and the content below it. When two full-bleed color *sections* sit back to back (rare on this page, but see `home`'s purple-then-orange CTA blocks), give the seam an explicit `margin` gap rather than letting the colors butt directly together — see `home`'s `.faculty-cta` for the pattern (`margin-top`/`margin-bottom: var(--space-800)`). This doesn't apply to callout *boxes* like `.data-projects__box` — those live inside the normal white page background and just need their own `padding`.
 - BEM-ish naming: `.block__element`, modifiers as `.block--variant` or `.block__element--variant`.
 - **Grid items with large images**: a grid item's default `min-width: auto` lets an image's native intrinsic width blow out the track even though the `<img>` itself is capped to `max-width:100%`. Set `min-width: 0` on the grid item (see `.data-project`) whenever a grid cell holds an image that might be wider than its column.
+- **No eyebrow/kicker label above hero or section headings** — sitewide convention as of 2026-08-28 (see `about`/`team-leadership` READMEs, which had one removed).
 
 ### Shared components
 
