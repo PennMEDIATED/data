@@ -98,7 +98,7 @@ button { font: inherit; cursor: pointer; }
 .intro {
   background: var(--c-bg);
   padding-top: var(--space-1000);
-  padding-bottom: var(--space-600);
+  padding-bottom: var(--space-300);
 }
 
 .intro__title {
@@ -151,15 +151,17 @@ button { font: inherit; cursor: pointer; }
    these are functional dashboard screenshots, and cropping them risks
    cutting off the UI being shown.
    ============================================================================= */
+/* Solid brand-purple backdrop, full-bleed edge to edge — matches
+   /home's .research-cta treatment (purple 1443×465 section, white
+   card with shadow), where the background sits on the outer section
+   and only the inner content column is width-constrained. */
 .data-projects {
-  padding-block: var(--space-1000);
+  background: var(--c-accent);
+  padding-top: var(--space-400);
+  padding-bottom: var(--space-1000);
 }
 
-/* Solid brand-purple backdrop with the dashboard screenshots floating
-   on it in white-bordered cards — matches /home's .research-cta
-   treatment (purple 1443×465 section, white card with shadow). */
 .data-projects__box {
-  background: var(--c-accent);
   padding: var(--space-600);
 }
 
