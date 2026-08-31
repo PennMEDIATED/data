@@ -155,7 +155,11 @@ button { font: inherit; cursor: pointer; }
   padding-block: var(--space-1000);
 }
 
+/* Solid brand-purple backdrop with the dashboard screenshots floating
+   on it in white-bordered cards — matches /home's .research-cta
+   treatment (purple 1443×465 section, white card with shadow). */
 .data-projects__box {
+  background: var(--c-accent);
   padding: var(--space-600);
 }
 
@@ -184,7 +188,7 @@ button { font: inherit; cursor: pointer; }
   font-size: 20px;
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--c-dark);
+  color: var(--c-white);
   transition: opacity 0.15s;
 }
 
@@ -194,13 +198,13 @@ button { font: inherit; cursor: pointer; }
   width: 100%;
   overflow: hidden;
   border-radius: var(--space-100);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .data-project:hover .data-project__image {
   transform: translateY(-4px);
-  box-shadow: 0 32px 72px rgba(0,0,0,0.18);
+  box-shadow: 0 32px 72px rgba(0,0,0,0.32);
 }
 
 .data-project__image img { width: 100%; height: auto; display: block; }
