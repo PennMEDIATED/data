@@ -2,7 +2,7 @@
 
 The Data Infrastructure page for the [Center on Media, Technology and Democracy](https://infodem.upenn.edu). Static HTML/CSS, no build step. Content mirrors https://infodem.upenn.edu/data/.
 
-Same conventions as the [`home`](https://github.com/PennMEDIATED/home), [`about`](https://github.com/PennMEDIATED/about), and [`grants`](https://github.com/PennMEDIATED/grants) repos — shared spacing tokens, brand colors, fonts, and the "Subscribe Here" newsletter treatment.
+Same conventions as the [`home`](https://github.com/PennMEDIATED/home), [`about`](https://github.com/PennMEDIATED/about), and [`grants`](https://github.com/PennMEDIATED/grants) repos — shared spacing tokens, brand colors, and fonts. Unlike those three, this page does **not** carry the "Subscribe Here" newsletter block or supporters row — both were removed (2026-08-31) as footer content that didn't belong on this page; don't re-add them without being asked.
 
 - `index.html` — page markup
 - `styles.css` — all styling (design tokens live at the top in `:root`)
@@ -11,7 +11,7 @@ Same conventions as the [`home`](https://github.com/PennMEDIATED/home), [`about`
 ## Updating content
 
 - **Intro copy** (`.intro`): the page title, PennMAP description, and body paragraphs. Edit `index.html` directly — this content changes rarely, so there's no templated update flow like `home`'s What's New grid.
-- **Research Projects** (`.data-projects`): a 3-up grid of external tools/dashboards built on PennMAP data, inside a `.data-projects__box` pale-orange callout (see below). To add one, drop its preview image/GIF into `assets/data/`, then add a new `.data-project` link following the existing pattern (title + image, wrapped in a link to the external tool). Unlike `home`'s `news-card` images, these are **not** cropped to a fixed aspect ratio — they're screenshots of live dashboards, and cropping risks cutting off the UI being shown. Let each image keep its native proportions.
+- **Research Projects** (`.data-projects`): a 3-up grid of external tools/dashboards built on PennMAP data, on a full-bleed `--c-accent` (brand purple) backdrop — matches `home`'s `.research-cta` treatment, white card/text floating on solid purple, rather than a contained pale-orange callout. To add one, drop its preview image/GIF into `assets/data/`, then add a new `.data-project` link following the existing pattern (title + image, wrapped in a link to the external tool). Unlike `home`'s `news-card` images, these are **not** cropped to a fixed aspect ratio — they're screenshots of live dashboards, and cropping risks cutting off the UI being shown. Let each image keep its native proportions.
 
 ## Style guide (shared across `home`, `about`, `grants`, and `data`)
 
@@ -38,7 +38,7 @@ All four repos are static HTML/CSS built off the same design system. If you're a
 | `--c-gray` | `#888680` | Secondary/muted text |
 | `--c-gray-dark` | `#54534f` | Body copy needing real contrast (~8:1 on white) — prefer this over `--c-gray` for paragraph text |
 | `--c-light-bg` | `#f8f7f4` | Placeholder/image background, section backgrounds that need to read as neutral "off-white" |
-| `--c-pale-orange` | `#fce4dc` | `--c-red` tinted ~12% onto white — matches `/grants`' `--c-pale-orange` exactly. Always a padded callout box sitting inside the normal content column (see `.data-projects__box`) — never a full-bleed section background |
+| `--c-pale-orange` | `#fce4dc` | `--c-red` tinted ~12% onto white — matches `/grants`' `--c-pale-orange` exactly. Reserved on this page (no longer used — `.data-projects__box` moved to a full-bleed `--c-accent` background, see below) |
 | `--c-white` | `#ffffff` | — |
 
 **Brand gradient** — used on every purple-to-red surface (this page's newsletter block, `about`'s orbital section, `home`'s hero): `linear-gradient(150deg, #5533ee 0%, #df3611 81%)` via `--c-gradient`. Never write this gradient out by hand or approximate it with different stops — reference the variable so a future palette tweak only has to happen in one place per repo.
@@ -60,11 +60,13 @@ All four repos are static HTML/CSS built off the same design system. If you're a
 
 ### Shared components
 
-- **Page intro / chapter heading** (`.intro` here, `.mission` in `about`): the page-top h1 is serif (`--f-serif`, 48px, weight 600, `--c-accent`); an in-page h2 subheading (e.g. "Penn Media Accountability Project (PennMAP)") drops to sans-serif (`--f-sans`, 32px, weight 600, `--c-dark`) so it reads as a section break rather than competing with the page title. Body paragraphs are DM Sans Light 20px with the lead paragraph of each block bolded (`font-weight:600`). Reuse this pattern for any future long-form text page rather than inventing a new type scale.
-- **Newsletter CTA ("Subscribe Here")**: a white rectangle button with an animated conic-gradient border trace on hover (`@property --cta-angle` + the `cta-trace` keyframes), and the label knocked out via `background-clip:text` filled with `--c-gradient` so the brand gradient shows through the letterforms on hover. This exact effect lives in `home`, `about`, `grants`, and here — if you touch one, touch all four. This page's signup form ID differs from `home`/`about`'s (confirmed against the live site: `2104021` here vs `2017639` there) — don't copy the URL wholesale without checking which form the page is supposed to point to.
-- **Supporters row**: `.supporters__label` 24px/weight 700/uppercase, Knight Foundation logo at `height:65px`, Penn logo at `height:120px`, both `width:auto`. Logos use `assets/knight-foundation-logo.png` and `assets/upenn-logo-full.png` — same files, copied across the other repos; don't re-crop or re-export one without the other.
-- **`--c-pale-orange` callouts**: `grants` uses this token for small callout boxes (background fill + `border-left: 3px solid var(--c-red)`) and tag pills (`color: var(--c-red)` + `background: var(--c-pale-orange)`), not just plain section backgrounds. If you add a callout or tag anywhere, match that treatment rather than a flat fill only.
+- **Page intro / chapter heading** (`.intro` here, `.mission` in `about`): the page-top h1 is serif (`--f-serif`, 48px, weight 600, `--c-accent`); an in-page h2 subheading (e.g. "Penn Media Accountability Project (PennMAP)") drops to sans-serif (`--f-sans`, 32px, weight 600, `--c-dark`) so it reads as a section break rather than competing with the page title. Body paragraphs are DM Sans Light 20px. Reuse this pattern for any future long-form text page rather than inventing a new type scale. (This page's lead paragraphs were bolded at `font-weight:600` until 2026-08-31 — removed as unintentional-looking emphasis with no clear purpose; don't reintroduce it without a reason.)
+- **Purple full-bleed callout** (`.data-projects`): a solid `--c-accent` section running edge to edge (background on the outer, unconstrained section — not on the width-capped `*__inner`), with white text and white-bordered image cards floating on it with a strong shadow (`0 24px 64px rgba(0,0,0,.25)`, `0 32px 72px rgba(0,0,0,.32)` on hover). Matches `home`'s `.research-cta` exactly. This is the pattern to reach for anywhere a purple "featured content" band is needed — not a contained pale-orange callout.
 - **Cards/tiles in a grid**: never let a multi-column grid just shrink its columns as the viewport narrows — text becomes unreadably vertical. Reflow to fewer columns at defined breakpoints instead (see this page's `.data-projects__grid`, or `home`'s `.whats-new__grid`, for the pattern).
+
+### Hyperlinks in body copy
+
+Inline links inside flowing prose (paragraphs, bios, captions — not nav links, buttons, or whole-card/tile links) use one shared treatment sitewide: `color: var(--c-red)`, `font-weight: 500`, no underline, `opacity: 0.7` on hover, no color change. See `.intro__body a` here — same rule as `.event-card__caption a` (`events`), `.post-excerpt a` / `.modal-body a` (`blog`), `.intro__body a` (`grants`), and the bio/card-desc link rules in `our-team-faculty`. The one documented exception is `events`' `.seminar__body a`, which sits on a purple gradient backdrop and uses white + underline instead, for contrast reasons specific to that surface — don't treat it as a second pattern to choose from.
 
 ### Keeping the repos in sync
 
