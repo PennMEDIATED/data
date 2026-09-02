@@ -21,7 +21,6 @@
   /* ── Figma colour tokens ── */
   --c-bg:         #ffffff;
   --c-dark:       #0d0d0c;          /* rgb(13,13,12)   */
-  --c-nav-bg:     rgba(13,13,12,0.92);
   --c-light-bg:   #f8f7f4;          /* rgb(248,247,244)*/
   --c-pale-orange: #fce4dc;         /* rgb(252,228,220) — --c-red tinted ~12% onto white; matches /grants' --c-pale-orange exactly */
   --c-accent:     #5533ee;          /* rgb(85,51,238)  */
@@ -60,7 +59,6 @@
   /* ── Page layout ── */
   --max-w: 1440px;
   --pad-x: var(--space-1000);   /* 80px side padding — page-level rhythm */
-  --nav-h: 52px;
 }
 
 /* Side padding scales down on smaller screens — 80px fixed padding eats
@@ -153,7 +151,7 @@ button { font: inherit; cursor: pointer; }
 .intro {
   background: var(--c-bg);
   padding-top: var(--space-1000);
-  padding-bottom: var(--space-300);
+  padding-bottom: var(--space-600);
 }
 
 .intro__title {
@@ -212,8 +210,7 @@ button { font: inherit; cursor: pointer; }
    and only the inner content column is width-constrained. */
 .data-projects {
   background: var(--c-accent);
-  padding-top: 0;
-  padding-bottom: var(--space-1000);
+  padding-block: var(--space-1000);
 }
 
 .data-projects__box {
