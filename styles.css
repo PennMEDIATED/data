@@ -194,7 +194,7 @@ button { font: inherit; cursor: pointer; }
    and only the inner content column is width-constrained. */
 .data-projects {
   background: var(--c-accent);
-  padding-top: var(--space-400);
+  padding-top: 0;
   padding-bottom: var(--space-1000);
 }
 
