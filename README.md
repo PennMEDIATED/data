@@ -63,9 +63,43 @@ All four repos are static HTML/CSS built off the same design system. If you're a
 - **Purple full-bleed callout** (`.data-projects`): a solid `--c-accent` section running edge to edge (background on the outer, unconstrained section — not on the width-capped `*__inner`), with white text and white-bordered image cards floating on it with a strong shadow (`0 24px 64px rgba(0,0,0,.25)`, `0 32px 72px rgba(0,0,0,.32)` on hover). Matches `home`'s `.research-cta` exactly. This is the pattern to reach for anywhere a purple "featured content" band is needed — not a contained pale-orange callout.
 - **Cards/tiles in a grid**: never let a multi-column grid just shrink its columns as the viewport narrows — text becomes unreadably vertical. Reflow to fewer columns at defined breakpoints instead (see this page's `.data-projects__grid`, or `home`'s `.whats-new__grid`, for the pattern).
 
-### Hyperlinks in body copy
+## Hyperlinks
 
-Inline links inside flowing prose (paragraphs, bios, captions — not nav links, buttons, or whole-card/tile links) use one shared treatment sitewide: `color: var(--c-red)`, `font-weight: 500`, no underline, `opacity: 0.7` on hover, no color change. See `.intro__body a` here — same rule as `.event-card__caption a` (`events`), `.post-excerpt a` / `.modal-body a` (`blog`), `.intro__body a` (`grants`), and the bio/card-desc link rules in `our-team-faculty`. The one documented exception is `events`' `.seminar__body a`, which sits on a purple gradient backdrop and uses white + underline instead, for contrast reasons specific to that surface — don't treat it as a second pattern to choose from.
+One taxonomy, five categories, shared by every page repo. Pick the category by what the link *is*, not by which repo you happen to be editing.
+
+**1. In-text links** — embedded mid-sentence in flowing prose.
+
+| ground | text | underline | hover |
+| --- | --- | --- | --- |
+| white / light | `--c-dark` | `border-bottom: 1px solid rgba(13, 13, 12, 0.35)` | text and underline both turn `--c-red` |
+| colour / gradient | `--c-white` | `border-bottom: 1px solid rgba(255, 255, 255, 0.5)` | fade to `opacity: 0.7` — no colour swap |
+
+The underline is a `border-bottom`, not `text-decoration`, so its colour can be transitioned independently of the text on hover. Pair it with `transition: color 0.15s, border-color 0.15s` on light grounds and `transition: opacity 0.15s` on coloured ones.
+
+White-to-anything reads poorly on a saturated ground, which is why the coloured case fades instead of changing hue.
+
+**2. Independent links** — a standalone text link that isn't inside a sentence ("Learn More About the Center", "Download the Full Schedule"). Same colours, decoration and hover as category 1, **plus a thin arrow** `⟶` after the text. Use `⟶` (`&#10230;`), not the `↗` badge from category 4.
+
+**3. Document buttons** — an independent link that opens a document (a PDF, a report). A filled button box, not text:
+
+| ground | box | text |
+| --- | --- | --- |
+| white / light | `--c-red` | `--c-white` |
+| colour / gradient | `--c-white` | `--c-dark` |
+
+Hover is **movement, not colour** — a lift or nudge. Do not darken or recolour the box.
+
+**4. Links to another web page** — this site or an external one. The containing box carries the shared `.card-arrow`: a 26px dark circle with a white `↗`, in the box's top corner. On hover the arrow scales slightly and its background becomes a sliding purple-to-orange gradient (`@keyframes card-arrow-slide`), and the box itself animates. No separate text button — the whole box is the link.
+
+**Exception:** a link to a research paper is category 2, not this — thin arrow, no badge.
+
+**5. Hyperlinked headings** — a heading that is itself a link (a post title, a card title). Colour shift on hover per the ground rules above, and **no arrow and no underline**.
+
+### Dropdowns and disclosures
+
+A dropdown, `<details>` block or expand/collapse control uses one affordance sitewide: a **chevron SVG** (`M2 5l5 5 5-5`, 13×13, `--c-red` stroke, `stroke-width: 1.8`) beside a `--c-red` label at `--fs-small`, rotating `180deg` on open with `transition: transform 0.25s`. See `llm-civic-discourse`'s "Full summary & details" toggle for the reference implementation.
+
+Never leave the marker to the browser — style `<select>` with `appearance: none` and supply the chevron, and hide the native `<summary>` marker. The `↗` circle badge is category 4's language and does not belong on a disclosure control.
 
 ### Keeping the repos in sync
 
