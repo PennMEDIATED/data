@@ -63,6 +63,21 @@ All four repos are static HTML/CSS built off the same design system. If you're a
 - **Purple full-bleed callout** (`.data-projects`): a solid `--c-accent` section running edge to edge (background on the outer, unconstrained section — not on the width-capped `*__inner`), with white text and white-bordered image cards floating on it with a strong shadow (`0 24px 64px rgba(0,0,0,.25)`, `0 32px 72px rgba(0,0,0,.32)` on hover). Matches `home`'s `.research-cta` exactly. This is the pattern to reach for anywhere a purple "featured content" band is needed — not a contained pale-orange callout.
 - **Cards/tiles in a grid**: never let a multi-column grid just shrink its columns as the viewport narrows — text becomes unreadably vertical. Reflow to fewer columns at defined breakpoints instead (see this page's `.data-projects__grid`, or `home`'s `.whats-new__grid`, for the pattern).
 
+## Embedding this page
+
+WordPress renders the real site; this repo is the source. The launch plan is direct-to-disk deployment, which needs no iframe — but iframe embedding still works and is the documented fallback, so keep this snippet accurate if you rename the repo or change its Pages URL.
+
+Paste into a WordPress Code block (or Divi Code module) as one line:
+
+```html
+<iframe id="pm-data" src="https://pennmediated.github.io/data/" title="Data & PennMAP — Penn MEDIATED" loading="lazy" style="width:100%;height:1250px;border:0;display:block"></iframe><script>(function(){var f=document.getElementById('pm-data');window.addEventListener('message',function(e){if(e.source!==f.contentWindow)return;var d=e.data||{},h=d.frameHeight||(d.type==='partners-page-resize'?d.height:0);if(h)f.style.height=h+'px';});})();</script>
+```
+
+The `height` in the snippet is only the starting value. Every Penn MEDIATED page posts its real height to the parent as `{{ frameHeight: <int> }}` — on load, on resize, once webfonts settle, and on any `ResizeObserver` change, so reveal animations, expanding cards and `<details>` toggles all resize the frame. The listener in the snippet applies it. `grants-rfp` also emits an older `{{ type: 'partners-page-resize', height }}` message; the snippet accepts both.
+
+The page checks `window.self === window.top` before posting, so opening it directly does nothing. If you add a new page repo, copy the script from the bottom of this `index.html` so it behaves the same way.
+
+
 ## Images and video
 
 This applies to every image, GIF and video added to any Penn MEDIATED repo. It is written to be followed directly — by a person or by a Claude session — without further instruction.
