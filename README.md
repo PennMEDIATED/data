@@ -1,6 +1,6 @@
 # Penn MEDIATED — Data
 
-The Data Infrastructure page for the [Center on Media, Technology and Democracy](https://infodem.upenn.edu). Static HTML/CSS, no build step. Content mirrors https://infodem.upenn.edu/data/.
+The Data Infrastructure page for the [Center on Media, Technology and Democracy](https://mediated.upenn.edu). Static HTML/CSS, no build step. Content mirrors https://mediated.upenn.edu/data/.
 
 Same conventions as the [`home`](https://github.com/PennMEDIATED/home), [`about`](https://github.com/PennMEDIATED/about), and [`grants`](https://github.com/PennMEDIATED/grants) repos — shared spacing tokens, brand colors, and fonts. Unlike those three, this page does **not** carry the "Subscribe Here" newsletter block or supporters row — both were removed (2026-08-31) as footer content that didn't belong on this page; don't re-add them without being asked.
 
