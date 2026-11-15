@@ -208,6 +208,25 @@ button { font: inherit; cursor: pointer; }
    --c-red, no underline, fading to opacity 0.7 on hover — the same
    fade the coloured-ground rule uses. Colour is the affordance here;
    the underline belongs to category 2's independent links. */
+/* Bulleted list inside intro copy — same type as .intro__body p. */
+.intro__list {
+  list-style: disc;
+  padding-left: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-150, 12px);
+}
+
+.intro__list li {
+  font-family: var(--f-sans);
+  font-size: var(--fs-lede);
+  font-weight: 300;
+  line-height: var(--lh-lede);
+  color: var(--c-dark);
+}
+
+.intro__list strong { font-weight: 600; }
+
 .intro__body a {
   color: var(--c-red-dark);
   font-weight: 500;
